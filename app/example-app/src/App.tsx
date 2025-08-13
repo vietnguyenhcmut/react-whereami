@@ -14,7 +14,6 @@ function App() {
       <p>Drag your pointer to below and see what happens.</p>
       <div style={{ width: "300px" }}>
         <Card>
-          <p>hello</p>
           <Button>Hover me!</Button>
         </Card>
       </div>

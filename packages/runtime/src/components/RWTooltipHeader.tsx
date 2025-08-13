@@ -6,19 +6,19 @@ import {
 } from "../styles/styles";
 import type { SourceInfo } from "../types";
 
-interface TooltipHeaderProps {
+interface RWTooltipHeaderProps {
   source: SourceInfo;
   isPinned: boolean;
   onPinClick: (event: React.MouseEvent) => void;
   onCloseClick: (event: React.MouseEvent) => void;
 }
 
-export function TooltipHeader({
+export function RWTooltipHeader({
   source,
   isPinned,
   onPinClick,
   onCloseClick,
-}: TooltipHeaderProps) {
+}: RWTooltipHeaderProps) {
   const definitionFileName = source.definitionFile.split("/").pop();
 
   const vsCodeLink = `vscode://file/${source.usageAbsoluteFile}:${source.usageLine}`;
@@ -41,7 +41,13 @@ export function TooltipHeader({
         </div>
         <a
           href={vsCodeLink}
-          style={{ color: "#9CDCFE", opacity: 0.7, textDecoration: "none" }}
+          title={`Click to open in VS Code: ${source.usageFile}:${source.usageLine}`}
+          style={{
+            color: "inherit",
+            opacity: 0.7,
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
         >
           Being used at: {source.usageFile}:{source.usageLine}
         </a>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import hljs from "highlight.js";
-import { TooltipHeader } from "./TooltipHeader";
+import { RWTooltipHeader } from "./RWTooltipHeader";
 import { getTooltipStyle, codeContainerStyle } from "../styles/styles";
 import type { SourceInfo, Position } from "../types";
 
-interface TooltipProps {
+interface RWTooltipProps {
   source: SourceInfo;
   position: Position;
   isPinned: boolean;
@@ -13,14 +13,14 @@ interface TooltipProps {
   onCloseClick: (event: React.MouseEvent) => void;
 }
 
-export function Tooltip({
+export function RWTooltip({
   source,
   position,
   isPinned,
   tooltipRef,
   onPinClick,
   onCloseClick,
-}: TooltipProps) {
+}: RWTooltipProps) {
   const [highlightedContent, setHighlightedContent] = useState("");
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function Tooltip({
 
   return (
     <div style={getTooltipStyle(position)} ref={tooltipRef}>
-      <TooltipHeader
+      <RWTooltipHeader
         source={source}
         isPinned={isPinned}
         onPinClick={onPinClick}

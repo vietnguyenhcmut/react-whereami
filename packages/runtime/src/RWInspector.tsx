@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "highlight.js/styles/github-dark.css";
 import { useInspectorEvents } from "./hooks/useInspectorEvents";
-import { Tooltip } from "./components/Tooltip";
+import { RWTooltip } from "./components/RWTooltip";
 import { statusIndicatorStyle } from "./styles/styles";
 
 const StatusIndicator = ({ isActive }: { isActive: boolean }) => (
   <div
     style={{
       ...statusIndicatorStyle,
-      color: isActive ? "rgba(2, 159, 250, 0.5)" : "rgba(55,55,55, 0.5)",
-      border: isActive
-        ? "1px solid rgba(2, 159, 250, 0.5)"
-        : "1px solid rgba(55,55,55, 0.5)",
+      color: isActive ? "rgba(2,159,250,0.5)" : "rgba(0,0,0,0.5)",
+      border: `1px solid ${
+        isActive ? "rgba(2,159,250,0.5)" : "rgba(0,0,0,0.5)"
+      }`,
     }}
-    title="Press Alt+Shift+I to toggle"
+    title="Press Shift+I to toggle"
   >
     Inspector: {isActive ? "ON" : "OFF"}
   </div>
 );
 
-export function Inspector() {
+export function RWInspector() {
   const [isActive, setActive] = useState(false);
   const {
     source,
@@ -33,8 +33,13 @@ export function Inspector() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log(`Key pressed: ${event.key}, Shift: ${event.shiftKey}`);
-      if (event.shiftKey && event.key.toLowerCase() === "i") {
+      if (
+        event.shiftKey &&
+        !event.altKey &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        event.key.toLowerCase() === "i"
+      ) {
         event.preventDefault();
         setActive((prev) => !prev);
       }
@@ -59,7 +64,7 @@ export function Inspector() {
     <>
       <StatusIndicator isActive={isActive} />
       {source && position && (
-        <Tooltip
+        <RWTooltip
           source={source}
           position={position}
           isPinned={isPinned}
@@ -71,47 +76,3 @@ export function Inspector() {
     </>
   );
 }
-
-// import React from "react";
-// import "highlight.js/styles/github-dark.css";
-// import { useInspectorEvents } from "./hooks/useInspectorEvents";
-// import { Tooltip } from "./components/Tooltip";
-
-// export function Inspector() {
-//   const {
-//     source,
-//     setSource,
-//     position,
-//     setPosition,
-//     isPinned,
-//     setPinned,
-//     tooltipRef,
-//   } = useInspectorEvents();
-
-//   const handlePinClick = (event: React.MouseEvent) => {
-//     event.stopPropagation();
-//     setPinned((prev) => !prev);
-//   };
-
-//   const handleCloseClick = (event: React.MouseEvent) => {
-//     event.stopPropagation();
-//     setPinned(false);
-//     setSource(null);
-//     setPosition(null);
-//   };
-
-//   if (!source || !position) {
-//     return null;
-//   }
-
-//   return (
-//     <Tooltip
-//       source={source}
-//       position={position}
-//       isPinned={isPinned}
-//       tooltipRef={tooltipRef}
-//       onPinClick={handlePinClick}
-//       onCloseClick={handleCloseClick}
-//     />
-//   );
-// }

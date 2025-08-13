@@ -1,3 +1,5 @@
+import { Text } from "./Text";
+
 export function Card({ children, ...rest }: React.ComponentProps<"div">) {
   const cardStyle: React.CSSProperties = {
     backgroundColor: "rgba(0,0,0,0.05)",
@@ -9,6 +11,7 @@ export function Card({ children, ...rest }: React.ComponentProps<"div">) {
 
   return (
     <div style={cardStyle} {...rest}>
+      <Text />
       {children}
     </div>
   );
