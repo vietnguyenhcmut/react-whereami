@@ -1,6 +1,6 @@
 {
   "name": "@vietnguyenhcmut/react-whereami-vite-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Vite plugin for react-whereami. Displays the source code location of React components.",
   "main": "./dist/index.js",
