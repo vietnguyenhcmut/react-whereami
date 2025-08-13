@@ -1,5 +1,6 @@
 export interface SourceInfo {
   definitionFile: string;
+  definitionAbsoluteFile: string;
   usageFile: string;
   usageLine: number;
   usageAbsoluteFile: string;

@@ -53,6 +53,10 @@ export function transformCode(code: string, id: string, root: string) {
               finalDefinitionPath = `${finalDefinitionPath}.tsx`;
             }
 
+            const relativeDefinitionPath = path.relative(
+              root,
+              finalDefinitionPath
+            );
             const usageFilePath = path.relative(root, id);
             const usageLine = nodePath.node.loc.start.line;
             const usageAbsoluteFile = id;
@@ -75,6 +79,10 @@ export function transformCode(code: string, id: string, root: string) {
 
             const definitionFileAttr = t.jsxAttribute(
               t.jsxIdentifier("data-whereami-definition-file"),
+              t.stringLiteral(relativeDefinitionPath)
+            );
+            const definitionAbsoluteFileAttr = t.jsxAttribute(
+              t.jsxIdentifier("data-whereami-definition-absolute-file"),
               t.stringLiteral(finalDefinitionPath)
             );
             const usageFileAttr = t.jsxAttribute(
@@ -96,6 +104,7 @@ export function transformCode(code: string, id: string, root: string) {
                 wrapperIdAttr,
                 styleAttr,
                 definitionFileAttr,
+                definitionAbsoluteFileAttr,
                 usageFileAttr,
                 usageLineAttr,
                 usageAbsoluteFileAttr,

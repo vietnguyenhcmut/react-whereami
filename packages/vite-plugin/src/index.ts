@@ -14,7 +14,7 @@ export function whereamiPlugin(): Plugin {
     },
 
     configureServer(server) {
-      configureDevServer(server);
+      configureDevServer(server, root);
     },
 
     transform(code: string, id: string) {

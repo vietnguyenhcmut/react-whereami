@@ -47,6 +47,8 @@ export function useInspectorEvents(enabled: boolean) {
 
     if (element.dataset) {
       const definitionFile = element.dataset.whereamiDefinitionFile || "";
+      const definitionAbsoluteFile =
+        element.dataset.whereamiDefinitionAbsoluteFile || "";
       const usageFile = element.dataset.whereamiUsageFile || "";
       const usageLine = Number(element.dataset.whereamiUsageLine) || 0;
       const usageAbsoluteFile = element.dataset.whereamiUsageAbsoluteFile || "";
@@ -73,6 +75,7 @@ export function useInspectorEvents(enabled: boolean) {
         setPosition(newPosition);
         fetchSourceContent(
           definitionFile,
+          definitionAbsoluteFile,
           usageFile,
           usageLine,
           usageAbsoluteFile,

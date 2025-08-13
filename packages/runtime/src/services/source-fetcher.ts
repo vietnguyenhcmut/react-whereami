@@ -6,6 +6,7 @@ type SetSource = React.Dispatch<React.SetStateAction<SourceInfo | null>>;
 
 export const fetchSourceContent = async (
   definitionFile: string,
+  definitionAbsoluteFile: string,
   usageFile: string,
   usageLine: number,
   usageAbsoluteFile: string,
@@ -18,6 +19,7 @@ export const fetchSourceContent = async (
   if (fileContentCache.has(urlToFetch)) {
     setSource({
       definitionFile,
+      definitionAbsoluteFile,
       usageFile,
       usageLine,
       usageAbsoluteFile,
@@ -28,6 +30,7 @@ export const fetchSourceContent = async (
   }
   setSource({
     definitionFile,
+    definitionAbsoluteFile,
     usageFile,
     usageLine,
     usageAbsoluteFile,
@@ -41,6 +44,7 @@ export const fetchSourceContent = async (
       fileContentCache.set(urlToFetch, text);
       setSource({
         definitionFile,
+        definitionAbsoluteFile,
         usageFile,
         usageLine,
         usageAbsoluteFile,
@@ -54,6 +58,7 @@ export const fetchSourceContent = async (
     console.error("Failed to fetch source:", error);
     setSource({
       definitionFile,
+      definitionAbsoluteFile,
       usageFile,
       usageLine,
       usageAbsoluteFile,

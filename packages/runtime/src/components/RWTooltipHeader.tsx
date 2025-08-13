@@ -21,7 +21,8 @@ export function RWTooltipHeader({
 }: RWTooltipHeaderProps) {
   const definitionFileName = source.definitionFile.split("/").pop();
 
-  const vsCodeLink = `vscode://file/${source.usageAbsoluteFile}:${source.usageLine}`;
+  const vsCodeLink = `vscode://file/${source.definitionAbsoluteFile}`;
+  const vsCodeUsageLink = `vscode://file/${source.usageAbsoluteFile}:${source.usageLine}`;
 
   return (
     <div style={headerStyle}>
@@ -40,7 +41,7 @@ export function RWTooltipHeader({
           <strong>{definitionFileName}</strong>
         </div>
         <a
-          href={vsCodeLink}
+          href={vsCodeUsageLink}
           title={`Click to open in VS Code: ${source.usageFile}:${source.usageLine}`}
           style={{
             color: "inherit",
