@@ -3,6 +3,7 @@
 Stop guessing where your React components live. react-whereami is a dev-only tool that instantly shows you the source code of any component right in your browser.
 
 Instead of hunting through your codebase to find where a piece of the UI is rendered, just hover over it and get a direct link to the code.
+<img width="669" height="510" alt="image" src="https://github.com/user-attachments/assets/fb2f3e0e-822e-452b-83dd-3f0a9f08517b" />
 
 # Why react-whereami?
 
