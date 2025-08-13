@@ -1,0 +1,44 @@
+{
+  "name": "@vietnguyenhcmut/react-whereami-runtime",
+  "version": "0.1.3",
+  "private": false,
+  "description": "Runtime component for react-whereami. Displays a tooltip with component source code.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "debug",
+    "developer-tools"
+  ],
+  "author": "Viet Nguyen Van",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vietnguyenhcmut/react-whereami.git"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@types/highlight.js": "^10.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  }
+}

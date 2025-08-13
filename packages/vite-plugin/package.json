@@ -1,0 +1,43 @@
+{
+  "name": "@vietnguyenhcmut/react-whereami-vite-plugin",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Vite plugin for react-whereami. Displays the source code location of React components.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "plugin",
+    "debug",
+    "developer-tools"
+  ],
+  "author": "Viet Nguyen Van",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vietnguyenhcmut/react-whereami.git"
+  },
+  "peerDependencies": {
+    "vite": ">=7.1.2"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.24.7",
+    "@babel/parser": "^7.24.7",
+    "@babel/traverse": "^7.24.7",
+    "@types/babel__generator": "^7.27.0",
+    "@types/babel__parser": "^7.1.5",
+    "@types/babel__traverse": "^7.28.0",
+    "@types/node": "^24.2.1",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5",
+    "vite": "^7.1.2"
+  }
+}
