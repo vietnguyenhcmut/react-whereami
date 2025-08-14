@@ -37,21 +37,47 @@ export function RWTooltipHeader({
         )}
       </div>
       <div style={fileInfoStyle}>
-        <div>
-          <strong>{definitionFileName}</strong>
-        </div>
-        <a
-          href={vsCodeUsageLink}
-          title={`Click to open in VS Code: ${source.usageFile}:${source.usageLine}`}
+        <div
           style={{
-            color: "inherit",
-            opacity: 0.7,
-            textDecoration: "none",
-            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "start",
           }}
         >
-          Being used at: {source.usageFile}:{source.usageLine}
-        </a>
+          <div
+            style={{
+              border: "1px solid #91bcff",
+              padding: "4px",
+              borderRadius: "8px",
+              marginBottom: "8px",
+            }}
+          >
+            <strong>{definitionFileName}</strong>
+          </div>
+          <p
+            style={{
+              color: "inherit",
+              opacity: 0.7,
+              textDecoration: "none",
+              margin: 0,
+            }}
+          >
+            Being used at: {source.usageFile}:{source.usageLine}{" "}
+          </p>
+          <a
+            href={vsCodeUsageLink}
+            title={`Click to open in VS Code: ${source.usageFile}:${source.usageLine}`}
+            style={{
+              color: "rgb(171, 110, 36)",
+              textDecoration: "none",
+              cursor: "pointer",
+              fontSize: "9px",
+              fontWeight: "bold",
+            }}
+          >
+            Click to open in VS Code 👉
+          </a>
+        </div>
       </div>
     </div>
   );

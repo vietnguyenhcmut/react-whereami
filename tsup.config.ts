@@ -2,9 +2,9 @@ import { defineConfig } from "tsup";
 
 export default defineConfig([
   {
-    entry: ["packages/vite-plugin/src/index.ts"],
-    outDir: "packages/vite-plugin/dist",
-    tsconfig: "packages/vite-plugin/tsconfig.json",
+    entry: ["packages/plugin/src/index.ts"],
+    outDir: "packages/plugin/dist",
+    tsconfig: "packages/plugin/tsconfig.json",
     format: ["cjs", "esm"],
     dts: true,
     splitting: false,

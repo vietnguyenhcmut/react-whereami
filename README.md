@@ -27,34 +27,37 @@ In large codebases, finding the exact source file for a UI element can be a tedi
 
 # Installation
 
-The library includes two packages: a Vite plugin and a runtime component.
+The library includes two packages: a plugin and a runtime component.
 
 - Using pnpm (recommended):
+
 ```
-pnpm add -D @vietnguyenhcmut/react-whereami-vite-plugin @vietnguyenhcmut/react-whereami-runtime
+pnpm add -D @vietnguyenhcmut/react-whereami-plugin @vietnguyenhcmut/react-whereami-runtime
 ```
 
 - Using yarn:
+
 ```
-yarn add -D @vietnguyenhcmut/react-whereami-vite-plugin @vietnguyenhcmut/react-whereami-runtime
+yarn add -D @vietnguyenhcmut/react-whereami-plugin @vietnguyenhcmut/react-whereami-runtime
 ```
 
 - Using npm:
+
 ```
-npm install -D @vietnguyenhcmut/react-whereami-vite-plugin @vietnguyenhcmut/react-whereami-runtime
+npm install -D @vietnguyenhcmut/react-whereami-plugin @vietnguyenhcmut/react-whereami-runtime
 ```
 
 # Usage
 
 ### 1. Configure the Plugin
 
-Open your ```vite.config.ts``` and add the ```whereamiPlugin```. Important: The plugin must be placed before ```@vitejs/plugin-react```.
+Open your `vite.config.ts` and add the `whereamiPlugin`. Important: The plugin must be placed before `@vitejs/plugin-react`.
 
 ```typescript
 // vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { whereamiPlugin } from "@vietnguyenhcmut/react-whereami-vite-plugin";
+import { whereamiPlugin } from "@vietnguyenhcmut/react-whereami-plugin";
 
 export default defineConfig(({ mode }) => {
   console.log(`[vite.config.ts] Running in mode: "${mode}"`);
@@ -67,7 +70,7 @@ export default defineConfig(({ mode }) => {
 
 ### 2. Add the Inspector to Your App
 
-In your app's entry point (usually ```src/main.tsx```), render the ```<Inspector />``` component and import its theme CSS.
+In your app's entry point (usually `src/main.tsx`), render the `<Inspector />` component and import its theme CSS.
 
 ```typescript
 // src/main.tsx
@@ -98,12 +101,12 @@ A small status indicator will appear at the bottom-right corner of the screen to
 
 # How It Works
 
-```react-whereami``` combines a build-time plugin with a runtime component:
+`react-whereami` combines a build-time plugin with a runtime component:
 
-### The Plugin (@vietnguyenhcmut/react-whereami-vite-plugin):
+### The Plugin (@vietnguyenhcmut/react-whereami-plugin):
 
-This runs in Node.js during development. It uses Babel to parse your code's Abstract Syntax Tree (AST). When it finds a custom component like ```<Button>```, it figures out where that component was defined (e.g., Button.tsx) and where it was used (e.g., App.tsx:10). It then injects this information as ```data-whereami-\*``` attributes right into the JSX. It also creates a special API endpoint to serve original source files on request.
+This runs in Node.js during development. It uses Babel to parse your code's Abstract Syntax Tree (AST). When it finds a custom component like `<Button>`, it figures out where that component was defined (e.g., Button.tsx) and where it was used (e.g., App.tsx:10). It then injects this information as `data-whereami-\*` attributes right into the JSX. It also creates a special API endpoint to serve original source files on request.
 
 ### The Runtime Component (@vietnguyenhcmut/react-whereami-runtime):
 
-The ```<Inspector />``` component renders only in your browser during development. It listens for the activation hotkey (```Shift + I```). When active, it listens for mouse hover events across the page. When you hover over an element that has our special ```data-whereami-\*``` attributes, it reads them, fetches the original source code from the plugin's API endpoint, and renders the helpful tooltip with syntax-highlighted code.
+The `<Inspector />` component renders only in your browser during development. It listens for the activation hotkey (`Shift + I`). When active, it listens for mouse hover events across the page. When you hover over an element that has our special `data-whereami-\*` attributes, it reads them, fetches the original source code from the plugin's API endpoint, and renders the helpful tooltip with syntax-highlighted code.
