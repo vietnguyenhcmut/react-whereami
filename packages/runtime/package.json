@@ -1,6 +1,6 @@
 {
   "name": "@vietnguyenhcmut/react-whereami-runtime",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "description": "Runtime component for react-whereami. Displays a tooltip with component source code.",
   "main": "./dist/index.js",
